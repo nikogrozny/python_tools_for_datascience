@@ -1,4 +1,4 @@
-from typing import List, TextIO, Dict
+from typing import List, TextIO
 from urllib import request, error
 import os
 from bs4 import BeautifulSoup

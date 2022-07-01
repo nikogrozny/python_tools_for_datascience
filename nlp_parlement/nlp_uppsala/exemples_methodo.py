@@ -1,8 +1,6 @@
 import pickle
-import re
 from math import sqrt
 from random import random, shuffle, randrange
-
 from scipy.cluster.hierarchy import dendrogram
 from statistics import mean
 from typing import Dict, List, TextIO, Tuple, Set

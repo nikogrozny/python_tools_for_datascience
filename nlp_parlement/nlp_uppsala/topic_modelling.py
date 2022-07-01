@@ -4,26 +4,17 @@ from typing import Tuple, List, Dict, Any, TextIO
 import pandas as pd
 import numpy as np
 import spacy
-
-nlp = spacy.load('fr_core_news_sm')
-from nltk import FreqDist, NaiveBayesClassifier
-from matplotlib import pyplot as plt
 import re
-import plotly.io as pio
-import plotly.graph_objects as go
-from nltk.corpus import stopwords
 from nltk import word_tokenize
 from french_lefff_lemmatizer.french_lefff_lemmatizer import FrenchLefffLemmatizer as FLF
 import gensim
-import gensim.corpora as corpora
-from gensim.utils import simple_preprocess
 from gensim.models import CoherenceModel, LdaModel
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
 import pickle
 
 lemmatizer = FLF()
-
+nlp = spacy.load('fr_core_news_sm')
 path_data = os.getcwd()
 path_to_model = os.path.join(path_data, "model_ML")
 stop_words = set(list(open(os.path.join(path_data, "french_stopwords.txt"), "r", encoding="utf-8").read().split("\n")))
