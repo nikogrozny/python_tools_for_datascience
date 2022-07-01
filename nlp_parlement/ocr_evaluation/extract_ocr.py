@@ -12,10 +12,10 @@ nltk.download('punkt')
 import pandas as pd
 from typing import TextIO, List, Dict, Tuple, Set
 import plotly.io as pio
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'insert_path_to_tesseract'
 from spellchecker import SpellChecker
 spell = SpellChecker(language="fr")  # loads default word frequency list
-path_data = r'C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_evaluation'
+path_data = os.getcwd()
 
 
 #%%
@@ -217,20 +217,20 @@ year = []
 month = []
 day = []
 page = []
-for name in os.listdir(r"C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_sorted") :
+for name in os.listdir(os.path.join(path_data, "\ocr_sorted")) :
     if re.split("\.",name)[0] in df.date.values : 
         print(name)
-        f = open(os.path.join(r"C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_sorted",name), "r",encoding="utf-8")
+        f = open(os.path.join(path_data, "ocr_sorted", name), "r", encoding="utf-8")
         document.append(str(f.read()))
-        date.append(re.split("img_|\.",name)[0])
-        year.append(re.split("-",name)[0])
+        date.append(re.split("img_|\.", name)[0])
+        year.append(re.split("-", name)[0])
 
-        m = re.split("-",name)[1]
+        m = re.split("-", name)[1]
         if len(m) == 1 :
             m = "0"+m
         month.append(m)
 
-        d = re.split("-",name)[2]
+        d = re.split("-", name)[2]
         if len(d) == 1 :
             d = "0" + d
         day.append(d)

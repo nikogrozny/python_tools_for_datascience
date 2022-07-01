@@ -20,10 +20,10 @@ nltk.download('punkt')
 import pandas as pd
 from typing import TextIO, List, Dict, Tuple, Set
 import plotly.io as pio
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'insert_path_to_tesseract'
 from nltk.tokenize import sent_tokenize
 
-path_data = r'C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_evaluation'
+path_data = os.getcwd()
 #%%
 df_original = pd.read_csv(os.path.join(path_data,"ocr_original.csv"),sep=";")
 df_original_fr = pd.read_csv(os.path.join(path_data,"ocr_original_fr.csv"),sep=";")
@@ -128,7 +128,7 @@ def len_ocr() :
         name="#tokens ocr bnf",
         mode="markers+lines", x=date, y=len_bnf_1
     ))    
-    pio.write_image(fig,r"C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_evaluation\ocr_size.png")
+    pio.write_image(fig, os.path.join(path_data, "ocr_size.png"))
     fig.show()
     
 def metrics_evaluation_3() : 
@@ -164,9 +164,9 @@ def metrics_evaluation_3() :
             'xanchor': 'center',
             'yanchor': 'top'},
                      legend=dict(yanchor="top",y=1,xanchor="left",x=0.9),template="plotly_white") 
-    fig.write_html(os.path.join(r"C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_evaluation\fig7.png"))
+    fig.write_html(os.path.join(path_data, "fig7.png"))
     
-    pio.write_image(fig,r"C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_evaluation\fig7.png")
+    pio.write_image(fig, os.path.join(path_data, "fig7.png"))
     fig.show()
 metrics_evaluation_3()
 #%%
@@ -191,7 +191,7 @@ fig.add_trace(go.Scatter(
 ))
 
 
-pio.write_image(fig,r"C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_evaluation\fig8.png")
+pio.write_image(fig, os.path.join(path_data, "fig8.png"))
 fig.show()
 
 fig = go.Figure()
@@ -209,7 +209,7 @@ fig.add_trace(go.Scatter(
     mode="markers+lines", x=date, y=metrics_bnf_1
 ))
 
-pio.write_image(fig,r"C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_evaluation\fig9.png")
+pio.write_image(fig, os.path.join(path_data, "fig9.png"))
 fig.show()
 
 #%%
@@ -231,7 +231,6 @@ fig.add_trace(go.Scatter(
 ))
 
 
-#pio.write_image(fig,r"C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_evaluation\fig7.png")
 fig.show()
 
 #%%
@@ -250,8 +249,6 @@ fig.add_trace(go.Scatter(
     name="bnf",
     mode="markers+lines", x=date, y=metrics_bnf_1
 ))
-
-#pio.write_image(fig,r"C:\Users\Aurelien Pellet\Desktop\Aurelien\epitech\methodo_histoire_nlp\ocr_evaluation\fig7.png")
 fig.show()
 
 

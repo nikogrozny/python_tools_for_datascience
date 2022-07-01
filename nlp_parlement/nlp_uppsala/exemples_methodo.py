@@ -431,21 +431,6 @@ def topics_cha(rep: str) -> AgglomerativeClustering:
     return cha
 
 
-def exemple_geo():
-    df = pd.read_csv(r"C:\Users\nicolas.bourgeois\Desktop\Backup\Epitech-archives\temp_files\inscriptions_v3.csv",
-                     sep=";", encoding="utf-8", header=0)
-    df = df.loc[df.loc[:, "Ville établissement - BAC"].apply(lambda z: "denis" in str(z))].sort_values(by="code_postal")
-    x = df.loc[:, "lycee"]
-    y = df.loc[:, "code_postal"].apply(lambda z: 110 + random()*2 if z[:3] == "974" else int(z[:2])) + random()*2
-    color = df.loc[:, "code_geo_es"].apply(lambda z: "red" if str(z)[:3] == "974" else "blue" if str(z)[:2] == "93"
-        else "black")
-    plt.figure(figsize=(12, 12))
-    plt.scatter(x, y, color=color)
-    plt.xticks(list())
-    plt.yticks(list())
-    plt.show()
-
-
 def tableau_pour_etiquetage(nb_blocs: int, longueur: int):
     data = pd.DataFrame(columns=["source", "text", "is_army"])
     fichiers = os.listdir(os.path.join(path_data, "ocr_sorted"))
